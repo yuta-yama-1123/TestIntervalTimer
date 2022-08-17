@@ -14,6 +14,8 @@
 		03BAEA3E28AD232C00E71864 /* TestIntervalTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAEA3D28AD232C00E71864 /* TestIntervalTimerTests.swift */; };
 		03BAEA4828AD232C00E71864 /* TestIntervalTimerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAEA4728AD232C00E71864 /* TestIntervalTimerUITests.swift */; };
 		03BAEA4A28AD232C00E71864 /* TestIntervalTimerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAEA4928AD232C00E71864 /* TestIntervalTimerUITestsLaunchTests.swift */; };
+		03BAEA5728AD352200E71864 /* timeLimitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAEA5628AD352200E71864 /* timeLimitView.swift */; };
+		03BAEA5928AD362100E71864 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAEA5828AD362100E71864 /* TimerModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		03BAEA4328AD232C00E71864 /* TestIntervalTimerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestIntervalTimerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03BAEA4728AD232C00E71864 /* TestIntervalTimerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestIntervalTimerUITests.swift; sourceTree = "<group>"; };
 		03BAEA4928AD232C00E71864 /* TestIntervalTimerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestIntervalTimerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		03BAEA5628AD352200E71864 /* timeLimitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timeLimitView.swift; sourceTree = "<group>"; };
+		03BAEA5828AD362100E71864 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				03BAEA2E28AD232B00E71864 /* ContentView.swift */,
 				03BAEA3028AD232C00E71864 /* Assets.xcassets */,
 				03BAEA3228AD232C00E71864 /* Preview Content */,
+				03BAEA5628AD352200E71864 /* timeLimitView.swift */,
+				03BAEA5828AD362100E71864 /* TimerModel.swift */,
 			);
 			path = TestIntervalTimer;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03BAEA2F28AD232B00E71864 /* ContentView.swift in Sources */,
+				03BAEA5928AD362100E71864 /* TimerModel.swift in Sources */,
 				03BAEA2D28AD232B00E71864 /* TestIntervalTimerApp.swift in Sources */,
+				03BAEA5728AD352200E71864 /* timeLimitView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
