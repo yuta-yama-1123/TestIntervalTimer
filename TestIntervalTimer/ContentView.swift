@@ -8,14 +8,33 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var timerContorller =  TimerModel()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack(alignment: .center) {
+            Button(action: {
+                if(timerContorller.timer == nil){
+                    timerContorller.start(120)
+                }else{
+                    timerContorller.stop()
+                }
+            }){
+                Text("\((timerContorller.timer != nil) ? "Stop Timer" : "Start Timer")")
+                    .font(
+                        .system(
+                            size: 100,
+                            weight: .heavy,
+                            design: .rounded
+                        )
+                    )
+            }
+            Text("\(timerContorller.count)")
+        }
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
     }
 }
