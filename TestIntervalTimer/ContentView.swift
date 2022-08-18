@@ -13,7 +13,7 @@ struct ContentView: View {
         VStack(alignment: .center) {
             Button(action: {
                 if(timerContorller.timer == nil){
-                    timerContorller.start(120)
+                    timerContorller.start(5.00)
                 }else{
                     timerContorller.stop()
                 }
@@ -27,7 +27,14 @@ struct ContentView: View {
                         )
                     )
             }
-            Text("\(timerContorller.count)")
+            Text("\(timerContorller.countStr)")
+                .font(
+                    .system(
+                        size: 100,
+                        weight: .heavy,
+                        design: .rounded
+                    )
+                )
         }
     }
 }

@@ -1,40 +1,65 @@
 import Foundation
 import Combine
+import AVFoundation
+import UIKit
 
 class TimerModel: ObservableObject{
-    @Published var count: Int = 0
+    @Published var count: Double = 0.00
     @Published var timer: AnyCancellable!
+    @Published var countStr: String = ""
+    let interval: Double = 0.05
+    var soundFlg: Bool = false
+    
+    private let shining_star = try!  AVAudioPlayer(data: NSDataAsset(name: "shining_star")!.data)
 
+    private func shiningStar() {
+        shining_star.stop()//追加①
+        shining_star.currentTime = 0.0//追加②
+        shining_star.play()
+    }
+
+    private func stopShiningStar() {
+        shining_star.stop()//追加①
+        shining_star.currentTime = 0.0//追加②
+    }
+    
     // タイマーの開始
-    func start(_ timeRemaining: Int = 10){
-        print("start Timer")
-
+    func start(_ timeRemaining: Double = 10.00){
         count = timeRemaining
         // TimerPublisherが存在しているときは念の為処理をキャンセル
         if let _timer = timer{
             _timer.cancel()
         }
 
-        // every -> 繰り返し頻度
-        // on -> タイマー処理が走るLoopを指定
-        // in: -> 入力処理モードの設定 .defalut:操作系の入力と同様に処理をするらしい : .common それ以外
-        // .defalutを指定していると処理が遅くなることがある
-        timer = Timer.publish(every: 1, on: .main, in: .common)
-            // 繰り返し処理の実行
-            .autoconnect()
-            //　 レシーバーが動くスレッドを指定しているのだと思われる
-            //  .main -> メインスレッド(UI)　, .global() -> 別スレッド
-            .receive(on: DispatchQueue.main)
-            .sink(receiveValue: ({_ in
-                // 設定した時間ごとに呼ばれる
-                self.count -= 1
-        }))
+        timer = Timer
+            .publish(
+                every: interval,
+                on: .main,
+                in: .common
+            )
+            .autoconnect() // 繰り返し処理の実行
+            .receive(
+                on: DispatchQueue.main
+            )
+            .sink(
+                receiveValue: (
+                    {_ in
+                        // 設定した時間ごとに呼ばれる
+                        self.count -= self.interval
+                        self.countStr = String(format: "%.1f", self.count)
+                        if (self.count < 0) {
+                            self.shiningStar()
+                            self.timer?.cancel()
+                        }
+                    }
+                )
+            )
     }
 
     // タイマーの停止
     func stop(){
-        print("stop Timer")
         timer?.cancel()
         timer = nil
+        stopShiningStar()
     }
 }
